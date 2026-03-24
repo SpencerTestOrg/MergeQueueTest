@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  merge_group: 
+
+permissions:
+  contents: read
+
+jobs:
+  sample-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+
+      - name: Print Something
+        run: |
+          echo "test"
+          echo "looks good"
+
+      - name: Force failure if requested
+        if: contains(github.event.pull_request.title, '(fail)')
+        run: |
+          echo "Failing because PR title contains (fail)"
+          exit 1
+
+      
