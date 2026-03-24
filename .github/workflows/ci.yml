@@ -19,7 +19,7 @@ jobs:
       - name: Print Something
         run: |
           echo "test"
-          sleep 300
+          sleep 100
           echo "looks good"
 
       - name: Force failure if requested
