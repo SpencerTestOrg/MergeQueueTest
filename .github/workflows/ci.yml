@@ -21,6 +21,11 @@ jobs:
           echo "test"
           sleep 100
           echo "looks good"
+          random=$(shuf -i 0-1 -n 1)
+          if [ $random -eq 0 ]; then
+            exit 1
+          fi
+          
 
       - name: Force failure if requested
         if: contains(github.event.pull_request.title, '(fail)')
