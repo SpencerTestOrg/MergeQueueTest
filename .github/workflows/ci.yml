@@ -3,7 +3,6 @@ name: CI
 on:
   pull_request:
     types: [opened, synchronize, reopened]
-  merge_group: 
 
 permissions:
   contents: read
@@ -13,18 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
 
       - name: Print Something
         run: |
           echo "test"
           sleep 100
           echo "looks good"
-          random=$(shuf -i 0-1 -n 1)
-          if [ $random -eq 0 ]; then
-            exit 1
-          fi
           
 
       - name: Force failure if requested
